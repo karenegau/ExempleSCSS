@@ -1,0 +1,265 @@
+@import "../mixins/mixins.scss";
+@import "../variables/variables.scss";
+@import "foundation/settings";
+
+
+html{
+	font-size:16px; 
+}
+
+header{
+	height:18.75em;
+	line-height:18.75em;
+	padding-left:60px;
+}
+
+.container {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: initial;
+	@include clearfix;
+}
+
+h1{
+	display: inline-block;
+	font-weight: bold;
+	font-size: 3.5em;
+	text-transform: uppercase;
+	vertical-align: middle;
+	color: white;
+	letter-spacing: 3px;
+	line-height: 1em;
+}
+
+h2{
+	font-weight: bold;
+	font-size: 2.2em;
+	color: white;
+	letter-spacing: 2px;
+}
+
+h3 {
+	font-size: 1.8em;
+	font-weight: bold;
+	color:white;
+	letter-spacing: 2px;
+}
+.visuallyhidden
+{
+	border:0;
+	clip:rect(0 0 0 0);
+	height:1px;
+	margin:-1px;
+	overflow:hidden;
+	padding:0; 
+	position:absolute;
+	width:1px;
+}
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+	clip:auto;
+	height:auto; 
+	margin:0;
+	overflow:visible;
+	position:static;
+	width:auto;
+}
+.text-left {
+	max-width:75%;
+	display:inline-block;
+	vertical-align:middle;
+}
+.maj_bleu  {
+	color:#00baff!important;
+	text-transform: uppercase;
+	margin:0;
+}
+
+.dontRead {
+	speak: none;
+}
+//---------------------------Couleurs de bannières ---------------------------------------------
+.orange{
+	background-image: url(../medias/images/bannieres/orange.png);
+	@include background-size(cover);
+}
+
+.rouge{
+	background-image: url(../medias/images/bannieres/rouge.png);
+	@include background-size(cover);
+}
+
+.mauve{
+	background-image: url(../medias/images/bannieres/mauve.png);
+}
+
+.gris{
+	background-image: url(../medias/images/bannieres/gris.png);
+	@include background-size(cover);
+}
+
+.bleuGris{
+	background-image: url(../medias/images/bannieres/bleuGris.png);
+	@include background-size(cover);
+}
+.turquoise {
+	background-image: url(../medias/images/bannieres/turquoise.png);
+	@include background-size(cover);
+}
+
+//--------------------------- Boutons ---------------------------------------------
+.button, button {
+	color: #00baff;
+	z-index:1;
+	background: transparent;
+	padding: 1em 1.2em;
+	border: solid #0998f0 3px;
+	text-decoration: none;
+	position:relative;
+	display:inline-block;
+	text-transform: uppercase;
+	margin:0;
+	@include transition(color 0.2s ease);
+
+	&:after {
+		position:absolute;
+		z-index:-1;
+		top:50%;
+		left:50%;
+		content:" ";
+		display:block;
+		height:0;
+		width:0;
+		background-color:#0998f0;
+		@include transition(top 0.2s ease, left 0.2s ease, height 0.2s ease, width 0.2s ease);
+	}
+	&:active {
+		color:white;
+		background-color:transparent;
+		&:after {
+			top:0%;
+			left:0%;
+			height:100%;
+			width:100%;
+		}
+	}
+	&:focus, &:hover {
+		background-color:transparent;
+	}
+}
+
+//--------------------------- Acollades ---------------------------------------------
+.acollade{
+		//font-family: Roboto-bold;
+		font-weight: bold;
+		font-size: 23em;
+		text-align: center;
+		//margin-bottom: 7em;
+		color: $orangeAcollade;
+	}
+
+//--------------------------- GridList ----------------------------------------------
+.GridList {
+	margin:0;
+	height:100%;
+	li {
+		text-align: center;
+		color:#fff;
+		list-style-type: none;
+		//padding: 2.215em 0;
+		height:16.666%;
+		&.li2 {
+			//padding: 8.20em 0;
+			height:50%;
+		}
+		&.li4 {
+			//padding: 3.72em 0;
+			height:25%;
+		}
+		.gridElementContainer {
+			position:relative;
+			top:50%;
+			display:block;
+			@include transform(translateY(-50%));
+		}
+	}
+}
+
+//--------------------------- media query ---------------------------------------------
+
+@media #{$small-only} {
+	header{
+		height:9.375em;
+		line-height:9.375em;
+		padding-left:20px;
+	}
+	h1{
+		font-size: 2em;
+	}
+	h2 {
+		//--infos generaux h2----
+		font-size: 1.8em !important;
+	}
+	h3{
+		font-size: 1.4em;
+	}
+	.acollade {
+		display: none;
+	}
+	
+	// -- GridList ----
+	section.GridStage {
+		height: auto;
+		ul.GridList {
+			li{
+				height: 6em;
+			}
+		}
+	}
+	.text-left {
+		max-width: none;
+	}
+}
+@media #{$medium-only} {
+	section.GridStage {
+		height: auto;
+		margin-bottom:0;
+		ul.GridList {
+			li{
+				height: 6em;
+			}
+		}
+	}
+}
+@media #{$large-only} {
+	section.GridStage {
+		height: auto;
+		ul.GridList {
+			li{
+				height: 6em;
+			}
+		}
+	}
+	.visionneuse {
+		h2 {
+			font-size:1.6em;
+			.endTitle{
+				font-size:2.5em !important;	
+			}
+		}
+	}
+}
+@media #{$medium-up} {
+	.button, button {
+		&:hover, &:focus {
+			color:white;
+			background-color:transparent;
+			&:after {
+				top:0%;
+				left:0%;
+				height:100%;
+				width:100%;
+			}
+		}
+	}
+}

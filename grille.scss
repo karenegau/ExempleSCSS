@@ -1,0 +1,100 @@
+/* ========================================================================== 
+@author Karène Gauthier
+
+LISTE DES SECTIONS 
+
+# Section - Grille
+# Media Queries
+========================================================================== */
+
+@import "foundation/settings";
+@import "../mixins/mixins.scss";
+@import "../variables/variables.scss";
+
+
+/* ========================================================================== 
+Section - Grille
+========================================================================== */
+
+#grilleCours {
+	h2{
+		margin-left:0.5em;
+		margin-top: 1em;
+		color:#292929;
+	}
+}
+
+.ligneSession{
+	margin-bottom:1.875em;
+	background: {
+		color:$grisPaleBordureNav;
+		repeat:none;
+	}
+	h3{
+		color:#C92828;
+		text-transform: uppercase;
+		text-align: center;
+		padding-top:1em;
+		padding-bottom:1em;
+	}
+	&:last-child{
+		margin-bottom: 0;
+	}
+	
+}
+.listeDesCours {
+	margin:0;
+	text-align:center;
+	.typeFormation {
+		padding:1.5em;
+		@include arrow_box(#c92828);
+		background: #c92828;
+		color:#fff;
+		letter-spacing: 1px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	
+	li {
+		&:nth-of-type(odd) a {
+			background:#E02D2D;
+			&:hover{
+				background:lighten(#E02D2D,8%);
+			}
+		}
+
+		&:nth-of-type(even) a {
+			background:#ea3434;
+			&:hover{
+				background:lighten(#ea3434,5%);
+			}
+		}
+		list-style-type: none;	
+		
+		a {
+			&:hover{
+				padding-left:1.8em;
+			}
+			@include transition(padding-left 0.2s ease);
+			text-decoration: underline;
+			padding:1.5em;
+			color:#fff;
+			display:block;
+		}	
+	}
+}
+
+
+/* ========================================================================== 
+# Media queries
+
+Média query sous 640 px
+========================================================================== */
+@media #{$large-up} {
+	.ligneSession{
+		h3{
+			padding-bottom:0;
+			padding:0.9em 0 0.9em 0;
+		}
+	}
+}

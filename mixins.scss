@@ -1,0 +1,68 @@
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+@import "compass/css3/background-size";
+@import "compass/css3/border-radius";
+@import "compass/css3/animation";
+
+@mixin clearfix {
+	&:after {
+		content: ".";
+		display: block;
+		clear: both;
+		visibility: hidden;
+		line-height: 0;
+		height: 0;
+	}
+}
+@mixin cacherTexte {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+@mixin override-button($couleur_fond, $couleur_texte:white) {
+	color: $couleur_fond;
+	border-color:$couleur_fond;
+	&:after {
+		background-color:$couleur_fond;
+	}
+	&:active {
+		background-color:transparent;
+		color:$couleur_texte;
+	}
+	@media #{$medium-up} {
+		&:hover, &:focus {
+			background-color:transparent;
+			color:$couleur_texte;
+		}
+	}
+}
+
+@mixin arrow_box($couleur){
+	position: relative;
+	&:after{
+		top: 100%;
+		left: 50%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+		border-color: rgba(136, 183, 213, 0);
+		border-top-color: $couleur;
+		border-width: 1.2em;
+		margin-left: -1.2em;
+	}
+}
+
+@mixin overSocial($scale){
+	@include transition(transform 0.4s, opacity 0.2s);
+	&:hover{
+		-webkit-transform: scale($scale);
+		-moz-transform: scale($scale);
+		-ms-transform: scale($scale);
+		transform: scale($scale);
+		opacity: 0.6;
+	}
+}
